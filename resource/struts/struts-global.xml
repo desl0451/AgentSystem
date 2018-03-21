@@ -18,6 +18,5 @@
 		<action name="pagenotfound">
 			<result>/sysmsg/pagenotfound.html</result>
 		</action>
-
 	</package>
 </struts>

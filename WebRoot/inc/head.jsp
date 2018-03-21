@@ -57,9 +57,9 @@
 			<div class='modifTop'></div>
 			<div class="modifyPasswordContent">
 				<ul>
-					<li>请输入原密码：<input type="password" id="oldpwdtext"/> <span id="oldpwdtip">您本次登录时的密码</span></li>
-					<li>请输入新密码：<input type="password" id="newpwd"/> <span id="newpwdtip">新密码不少于6个字符</span></li>
-					<li>请确认新密码：<input type="password" id="newpwd2"/> <span id="newpwdtip1">新密码不少于6个字符</span></li>
+					<li>请输入原密码：<input type="password" id="oldpwdtext" value="123456"/> <span id="oldpwdtip">您本次登录时的密码</span></li>
+					<li>请输入新密码：<input type="password" id="newpwd" value="654321"/> <span id="newpwdtip">新密码不少于6个字符</span></li>
+					<li>请确认新密码：<input type="password" id="newpwd2" value="654321"/> <span id="newpwdtip1">新密码不少于6个字符</span></li>
 					<li class="btnli">
 						<input id="modifypwdbtn" type="button" value="确认修改密码"/> 
 						<input id="modifypwconcledbtn" type="button" value="取消"/> 
