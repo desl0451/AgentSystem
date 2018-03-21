@@ -1,11 +1,1 @@
-/struts/
-/BizTest.class
-/agentsystemdb.sql
-/applicationContext-actions.xml
-/applicationContext-default.xml
-/dtd/
-/jdbc.properties
-/log4j.properties
 /org/
-/schema/
-/struts.xml
