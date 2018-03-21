@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.agent.dao.systemconfig.SystemConfigMapper">
+	<select id="getSystemConfigs" parameterType="SystemConfig"
+		resultType="SystemConfig">
+		select * from as_systemconfig
+		<where>
+			<if test="isStart!=null">
+				and isStart=#{isStart}
+			</if>
+			<if test="configType!=null">
+				and configType=#{configType}
+			</if>
+			<if test="id!=null">
+				and id=#{id}
+			</if>
+		</where>
+	</select>
+
+	<select id="getSystemConfigIsStart" parameterType="SystemConfig"
+		resultType="SystemConfig">
+		select * from as_systemconfig where isStart-1
+		<if test="configType!=null">
+			and configType=#{configType}
+		</if>
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+	</select>
+
+	<!-- 添加 -->
+	<insert id="addSystemConfig" parameterType="SystemConfig">
+		INSERT INTO
+		`agentsystemdb`.`as_systemconfig`
+		(id,configType,configTypeName,configTypeValue,configValue,isStart)
+		VALUES
+		(#{id},#{configType},#{configTypeName},#{configTypeValue},#{configValue},#{isStart})
+	</insert>
+
+	<!-- 修改 -->
+	<update id="modifySystemConfig" parameterType="SystemConfig">
+		<set>
+			<if test="configType != null"> configType = #{configType},</if>
+			<if test="configTypeName != null"> configTypeName = #{configTypeName},</if>
+			<if test="configTypeValue != null"> configTypeValue = #{configTypeValue},</if>
+			<if test="configValue != null"> configValue = #{configValue},</if>
+			<if test="isStart != null"> isStart = #{isStart}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteSystemConfig" parameterType="systemConfig">
+		delete from as_systemconfig where id = #{id}
+	</delete>
+	
+	<select id="isPeatConfig" resultType="int" parameterType="systemConfig">
+		select count(*) from as_systemconfig 
+		<trim prefix="where" prefixOverrides="and | or">
+			<if test="configType != null">
+				and configType = #{configType}
+			</if>
+			<if test="configTypeName != null">
+				and configTypeName = #{configTypeName}
+			</if>
+			<if test="id != null">
+				and id != #{id}
+			</if>
+		</trim>
+	</select>
+</mapper>

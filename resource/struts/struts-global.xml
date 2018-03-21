@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd" >
+<struts>
+	<include file="struts-default.xml" />
+	<package name="global" extends="struts-default">
+		<interceptors>
+			<interceptor name="sysInterceptor" class="org.agent.interceptor.SysInterceptor"></interceptor>
+			<interceptor-stack name="adminIntegerceptor">
+				<interceptor-ref name="sysInterceptor"></interceptor-ref>
+				<interceptor-ref name="paramsPrepareParamsStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<global-results>
+			<result name="all">/sysmsg/error.jsp</result>
+			<result name="input" type="redirectAction">login</result>
+			<result name="login" type="redirectAction">login</result>
+		</global-results>
+		<action name="pagenotfound">
+			<result>/sysmsg/pagenotfound.html</result>
+		</action>
+
+	</package>
+</struts>
