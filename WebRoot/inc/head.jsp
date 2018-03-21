@@ -25,7 +25,7 @@
 				</h2></li>
 			<li class="headfunc">
 				<ul>
-					<li>欢迎您：${Constants.SESSION_USER }
+					<li>欢迎您：<s:property value="currentUser.userName"/>
 						<a class="modifypwd" id="modifypwdbtna"> 修改密码 </a> 
 						<a href="/exit.action">退出</a>
 					</li>
@@ -56,15 +56,15 @@
 	<div id="modifydiv" class="modifydiv">
 			<div class='modifTop'></div>
 			<div class="modifyPasswordContent">
-			<ul>
-			<li>请输入原密码：<input type="password" id="oldpwdtext"/> <span id="oldpwdtip">您本次登录时的密码</span></li>
-			<li>请输入新密码：<input type="password" id="newpwd"/> <span id="newpwdtip">新密码不少于6个字符</span></li>
-			<li>请确认新密码：<input type="password" id="newpwd2"/> <span id="newpwdtip1">新密码不少于6个字符</span></li>
-			<li class="btnli">
-			<input id="modifypwdbtn" type="button" value="确认修改密码"/> 
-			<input id="modifypwconcledbtn" type="button" value="取消"/> 
-			</li>
-			</ul>
+				<ul>
+					<li>请输入原密码：<input type="password" id="oldpwdtext"/> <span id="oldpwdtip">您本次登录时的密码</span></li>
+					<li>请输入新密码：<input type="password" id="newpwd"/> <span id="newpwdtip">新密码不少于6个字符</span></li>
+					<li>请确认新密码：<input type="password" id="newpwd2"/> <span id="newpwdtip1">新密码不少于6个字符</span></li>
+					<li class="btnli">
+						<input id="modifypwdbtn" type="button" value="确认修改密码"/> 
+						<input id="modifypwconcledbtn" type="button" value="取消"/> 
+					</li>
+				</ul>
 			</div>
 	</div>
 </body>

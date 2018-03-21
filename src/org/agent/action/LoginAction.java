@@ -17,6 +17,7 @@ public class LoginAction extends BaseAction {
 
 	// 接收form表单提交的数据
 	private User user;
+
 	@Resource
 	UserService userService;
 
@@ -73,18 +74,7 @@ public class LoginAction extends BaseAction {
 		return SUCCESS;
 	}
 
-	public void modifyPwd() {
-		// _user:已登录用户.User页面接收的
-		User _user = (User) this.getRequest().getSession().getAttribute(Constants.SESSION_USER);
-		if (MD5.MD5Encode(user.getUserName()).equals(_user.getUserName())) {
-			_user.setUserPassword(MD5.MD5Encode(user.getUserPassword()));
-			if (this.getUserService().modifyUser(_user) > 0) {
-				this.getOut().println("success");
-				this.getOut().flush();
-				this.getOut().close();
-			}
-		}
-	}
+	
 
 	/**
 	 * 退出

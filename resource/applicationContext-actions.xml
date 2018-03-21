@@ -4,6 +4,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 	<!-- 这里配置Action -->
-	<!-- IndexAction -->
+	<!-- 登录Action -->
 	<bean id="loginAction" class="org.agent.action.LoginAction" scope="prototype" />
+	
+	<!-- 密码修改Action -->
+	<bean id="indexAction" class="org.agent.action.index.IndexAction" scope="prototype" />
+	
 </beans> 

@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.agent.common.Constants;
 import org.agent.pojo.User;
 import org.agent.service.user.UserService;
 import org.apache.struts2.ServletActionContext;
@@ -27,7 +28,7 @@ public class BaseAction extends ActionSupport {
 	}
 
 	public BaseAction() {
-		this.setCurrentUser((User) this.getRequest().getSession().getAttribute("SESSION_USER"));
+		this.setCurrentUser((User) this.getRequest().getSession().getAttribute(Constants.SESSION_USER));
 		this.getResponse().setCharacterEncoding("utf-8");
 		try {
 			this.out = this.getResponse().getWriter();
