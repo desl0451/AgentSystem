@@ -39,4 +39,5 @@
 	<include file="struts/struts-index.xml" />
 	<include file="struts/struts-login.xml" />
 	<include file="struts/struts-user.xml" />
+	<include file="struts/struts-role.xml" />
 </struts>

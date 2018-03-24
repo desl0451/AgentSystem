@@ -21,6 +21,7 @@ public class BizTest {
 		// SystemConfig());
 		// System.out.println("################"+list.size()+"#################");
 		RoleMapper roleMapper = (RoleMapper) ctx.getBean("roleMapper");
+		
 		List<Role> list = roleMapper.getRoleList();
 		for (Role role : list) {
 			System.out.println(role.getRoleName());

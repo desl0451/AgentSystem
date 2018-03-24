@@ -12,8 +12,7 @@
 		<result property="isStart" column="isStart" />
 	</resultMap>
 
-	<select id="getRoleList" parameterType="org.agent.pojo.Role"
-		resultMap="roleList">
+	<select id="getRoleList" parameterType="org.agent.pojo.Role" resultMap="roleList">
 		select * from as_role
 		<where>
 			<if test="userName!=null">
@@ -63,8 +62,11 @@
 	<delete id="deleteRole" parameterType="org.agent.pojo.Role">
 		DELETE from as_role where id=#{id}
 	</delete>
-	
-	<select id="getRoleIdAndRnameList" parameterType="org.agent.pojo.Role">
+	<resultMap type="org.agent.pojo.Role" id="myRole">
+		<result property="roleName" column="roleName"/>
+		<result property=""/>
+	</resultMap>
+	<select id="getRoleIdAndRnameList" resultType="org.agent.pojo.Role">
 		select id,roleName from as_role where isStart=1
 	</select>
 </mapper>

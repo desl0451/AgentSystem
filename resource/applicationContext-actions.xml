@@ -10,4 +10,6 @@
 	<!-- 密码修改Action -->
 	<bean id="indexAction" class="org.agent.action.index.IndexAction" scope="prototype" />
 	
+	<!-- 角色Action -->
+	<bean id="roleAction" class="org.agent.action.RoleAction" scope="prototype"/>
 </beans> 
