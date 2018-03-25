@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
-<%@include file="/inc/head.jsp"%>
+<jsp:include page="/WEB-INF/pages/inc/head.jsp"/>
 <div class="mbxnav">
 	<a href="/main.action">代理商管理</a> \ <a href="/main.action">当前账户信息</a>
 </div>
@@ -19,6 +19,6 @@
 		</ul>
 	</div>
 </div>
-<jsp:include page="/inc/foot.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/pages/inc/foot.jsp"></jsp:include>
 </body>
 </html>

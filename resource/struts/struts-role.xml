@@ -13,7 +13,7 @@
 		<action name="editrole" class="roleAction" method="editRole">
 			<!-- <result name="success" type="redirectAction">rolelist?actionMessage=${actionMessage}</result> -->
 		</action>
-		<action name="delrole" class="roleAction" method="delRole">
+		<action name="deleterole" class="roleAction" method="deleteRole">
 		</action>
 	</package>
 </struts>  

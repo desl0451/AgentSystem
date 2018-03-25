@@ -16,7 +16,7 @@
 <script type="text/javascript" src="/js/humane/humane.js"></script>
 <script type="text/javascript" src="/js/public.js"></script>
 <script type="text/javascript" src="/js/main.js" charset="UTF-8"></script>
-<script type="text/javascript" src="/js/rolelist.js" charset="UTF-8"></script>
+
 </head>
 <body>
 	<div class="head">

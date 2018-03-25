@@ -66,13 +66,16 @@ public class RoleAction extends BaseAction {
 			this.getRoleService().addRole(role);
 			this.getOut().print("success");
 		} else if (type.equals("modify")) {
-
-		} else {
+			role.setLastUpdateTime(new Date());
+			this.getRoleService().modifyRole(role);
 			this.getOut().print("success");
 		}
 	}
 
-	public String deleteRole() {
-		return this.SUCCESS;
+	public void deleteRole() {
+		if (this.getRoleService().deleteRole(role) > 0) {
+			this.getOut().print("success");
+		}
+
 	}
 }

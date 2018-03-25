@@ -34,6 +34,6 @@
 </div>
  -->
 
-<jsp:include page="/inc/foot.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/pages/inc/foot.jsp"/>
 </body>
 </html>
