@@ -1,19 +1,18 @@
 package org.agent.action;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.agent.common.Constants;
 import org.agent.pojo.Role;
 import org.agent.service.role.RoleService;
-import org.agent.service.user.UserService;
 import org.apache.log4j.Logger;
 
 public class RoleAction extends BaseAction {
 	private Logger logger = Logger.getLogger(RoleAction.class);
 	private static final long serialVersionUID = -6755381166484867033L;
-	
+
 	@Resource
 	RoleService roleService;
 	private Role role;
@@ -44,13 +43,6 @@ public class RoleAction extends BaseAction {
 		this.type = type;
 	}
 
-	// 查询所有角色
-	public String roleList() {
-		this.roleList= this.getRoleService().getRoleList();
-		logger.debug(roleList.size()+"############");
-		return SUCCESS;
-	}
-
 	public RoleService getRoleService() {
 		return roleService;
 	}
@@ -59,13 +51,25 @@ public class RoleAction extends BaseAction {
 		this.roleService = roleService;
 	}
 
-	public String edit() {
-		if (type.equals("add")) {
+	// 查询所有角色
+	public String roleList() {
+		this.roleList = this.getRoleService().getRoleList();
+		return SUCCESS;
+	}
 
+	public void editRole() {
+		if (type.equals("add")) {
+			// role.setCreatedBy(this.getRequest().getSession().getAttribute(Constants.SESSION_USER));
+			// System.out.println(this.getCurrentUser().getRoleName()+"###########"+this.getCurrentUser().getUserCode());
+			role.setCreatedBy(this.getCurrentUser().getUserCode());
+			role.setCreationTime(new Date());
+			this.getRoleService().addRole(role);
+			this.getOut().print("success");
 		} else if (type.equals("modify")) {
 
+		} else {
+			this.getOut().print("success");
 		}
-		return this.SUCCESS;
 	}
 
 	public String deleteRole() {

@@ -5,13 +5,15 @@
 
 <struts>
 	<package name="role" namespace="/" extends="global">
-		<default-action-ref name="pagenotfound" />
-		
+		<default-interceptor-ref name="adminIntegerceptor"></default-interceptor-ref>
+		<!-- 设置Action -->
 		<action name="rolelist" class="roleAction" method="roleList">
-			<result>/WEB-INF/pages/rolelist.jsp</result>
+			<result name="success">/WEB-INF/pages/rolelist.jsp</result>
 		</action>
-		
-		<action name="editrole" class="roleAction" method="editRole"></action>
-		<action name="deleterole" class="roleAction" method="deleteRole"></action>
+		<action name="editrole" class="roleAction" method="editRole">
+			<!-- <result name="success" type="redirectAction">rolelist?actionMessage=${actionMessage}</result> -->
+		</action>
+		<action name="delrole" class="roleAction" method="delRole">
+		</action>
 	</package>
 </struts>  

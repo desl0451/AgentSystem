@@ -26,9 +26,11 @@ public class SysInterceptor implements Interceptor {
 	public void init() {
 		// TODO Auto-generated method stub
 
-	}/**
-		 * À¹½ØÆ÷ ÅÐ¶ÏÓÃ»§ÊÇ·ñµÇÂ¼
-		 */
+	}
+
+	/**
+	 * À¹½ØÆ÷ ÅÐ¶ÏÓÃ»§ÊÇ·ñµÇÂ¼
+	 */
 
 	@Override
 	public String intercept(ActionInvocation ai) throws Exception {

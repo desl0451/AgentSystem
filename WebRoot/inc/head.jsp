@@ -16,12 +16,13 @@
 <script type="text/javascript" src="/js/humane/humane.js"></script>
 <script type="text/javascript" src="/js/public.js"></script>
 <script type="text/javascript" src="/js/main.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/js/rolelist.js" charset="UTF-8"></script>
 </head>
 <body>
 	<div class="head">
 		<ul>
 			<li><h2>
-					  <img src="/imgs/logo.png" width="130px"/> 
+<!-- 					  <img src="/imgs/logo.png" width="130px"/>  -->
 				</h2></li>
 			<li class="headfunc">
 				<ul>

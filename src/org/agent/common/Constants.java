@@ -7,10 +7,10 @@ import org.agent.pojo.SystemConfig;
 import org.springframework.context.ApplicationContext;
 
 public class Constants {
-	public static final String SESSION_USER="userSession";
+	public static final String SESSION_USER = "userSession";
 	public static ApplicationContext cxt;
-	
-	/***************用户操作信息-开始*****************/
+
+	/*************** 用户操作信息-开始 *****************/
 	public static String OPERATE_INFO_USER_LOGIN_SUCCESS = "用户进行登录操作成功";
 	public static String OPERATE_INFO_USER_LOGIN_FAILD = "用户进行登录操作失败";
 	public static String OPERATE_INFO_USER_LOGOUT_SUCCESS = "用户注销账号操作成功";
@@ -18,14 +18,11 @@ public class Constants {
 	public static String OPERATE_INFO_USER_ACCESS_ACCOUNTDETAIL = "用户进行账户明细查询";
 	public static String OPERATE_INFO_USER_lIST_SEARCH = "用户进行代理商用户查询";
 	public static String OPERATE_INFO_USER_LOGLIST_SEARCH = "用户进行操作日志查询";
-	
-	
+
 	/********************* 系统配置项 *********************/
 	public static List<SystemConfig> systemConfigList;
 
-	/**
-	 * 账务类型1
-	 */
+	// 账务类型1
 	public static List<SystemConfig> accountConfigList = new ArrayList<SystemConfig>();
 
 	// 服务类型2

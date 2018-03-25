@@ -7,7 +7,7 @@
 </div>
 <div class="container">
 	<!-- 添加面板 -->
-	<div id="addRole" class="addRoleDivClass">
+	<div id="addRoleDiv" class="addRoleDivClass">
 		<ul>
 			<li class="lititle"><br>添加角色信息</li>
 			<li>角色名称：<input type="text" id="a_roleName" name="role.roleName"/></li>
