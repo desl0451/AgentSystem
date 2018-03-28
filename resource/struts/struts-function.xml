@@ -10,5 +10,10 @@
 			method="roleList">
 			<result>/WEB-INF/pages/permission.jsp</result>
 		</action>
+
+		<action name="funclist" class="org.agent.action.FunctionAction"
+			method="functionList">
+			<result>/WEB-INF/pages/functionlist.jsp</result>
+		</action>
 	</package>
 </struts>  

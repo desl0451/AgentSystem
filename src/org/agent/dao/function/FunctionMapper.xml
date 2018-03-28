@@ -3,7 +3,7 @@
 <mapper namespace="org.agent.dao.function.FunctionMapper">
 	<select id="getFunctionList" resultType="org.agent.pojo.Function">
 		select * from
-		as_function where isStart=1 and parentId&lt;&gt;0
+		as_function where isStart=1 and parentId!=0
 	</select>
 	<select id="getFunctionById" resultType="org.agent.pojo.Function"
 		parameterType="org.agent.pojo.Function">
