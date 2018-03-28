@@ -12,8 +12,8 @@
 				<s:iterator value="roleList">
 					<li>
 						<div id="sidebar">
-							<a target="funclist" href="/funclist.action?roleId="<s:property value="id" />">
-								<s:property value="roleName" />
+							<a href="/funclist.action?roleId=<s:property value='id'/>" target="funclist">
+		                	 + <s:property value="roleName"/>
 							</a>
 						</div>
 					</li>

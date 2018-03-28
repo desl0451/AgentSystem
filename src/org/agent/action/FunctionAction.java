@@ -3,8 +3,10 @@ package org.agent.action;
 import java.util.List;
 
 import org.agent.pojo.Function;
+import org.agent.pojo.Permission;
 import org.agent.pojo.Role;
 import org.agent.service.function.FunctionService;
+import org.agent.service.permission.PermissionService;
 import org.agent.service.role.RoleService;
 
 import com.opensymphony.xwork2.Action;
@@ -15,6 +17,9 @@ public class FunctionAction extends BaseAction {
 	private List<Function> functionList;
 	private RoleService roleService;
 	private List<Role> roleList;
+	private PermissionService permissionService;
+
+	private Integer roleId;
 
 	public String roleList() {
 		// 获得所有角色
@@ -23,8 +28,34 @@ public class FunctionAction extends BaseAction {
 	}
 
 	public String functionList() {
-		this.functionList = this.functionService.getFunctionList();
-		return Action.SUCCESS;
+		try {
+			functionList = functionService.getFunctionList();
+			Permission pm = new Permission();
+			pm.setRoleId(this.getRoleId());
+			pm.setIsStart(1);
+			List<Permission> pList = permissionService.getList(pm);
+			if (pList != null) {
+				for (Permission p : pList)
+					for (Function f : functionList) {
+						if (p.getFunctionId() == f.getId())
+							f.setIsCheck(true);
+					}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return SUCCESS;
+	}
+
+	public void saveRoleFunc() {
+		// 调用业务处理方法保存角色 和功能的映射
+
+		this.getOut().print("success");
+	}
+
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
 	}
 
 	public List<Role> getRoleList() {
@@ -58,4 +89,17 @@ public class FunctionAction extends BaseAction {
 	public void setFunctionService(FunctionService functionService) {
 		this.functionService = functionService;
 	}
+
+	public PermissionService getPermissionService() {
+		return permissionService;
+	}
+
+	public void setPermissionService(PermissionService permissionService) {
+		this.permissionService = permissionService;
+	}
+
+	public Integer getRoleId() {
+		return roleId;
+	}
+
 }

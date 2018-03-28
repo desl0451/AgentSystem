@@ -7,6 +7,19 @@ $().ready(function() {
 		}
 	});
 	$("#saverolefunc").click(function() {
-		
+		var checkList = ""; //已选
+		var chlist = $(".cb");
+		var roleId = $("#roleid").val();
+		for (var i = 0; i < chlist.length; i++) {
+			if (chlist[i].checked) {
+				checkList += chlist[i].value + ",";
+			}
+		}
+		$.post("/saverolefunc.action", {'roleId':roleId,'checkList':checkList}, function(result) {
+			if(result=="success")
+				humane.success("保存成功!");
+			else
+				humane.error("保存失败!");
+		});
 	});
 });

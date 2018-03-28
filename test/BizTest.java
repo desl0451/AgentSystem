@@ -1,7 +1,7 @@
 import java.util.List;
 
-import org.agent.dao.function.FunctionMapper;
-import org.agent.pojo.Function;
+import org.agent.pojo.Permission;
+import org.agent.service.permission.PermissionService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -27,10 +27,20 @@ public class BizTest {
 		// System.out.println(role.getRoleName());
 		// }
 
-		FunctionMapper fMapper = (FunctionMapper) ctx.getBean("functionMapper");
-		List<Function> fList = fMapper.getFunctionList();
-		for (Function f : fList) {
-			System.out.println(f.getFunctionName());
+		// FunctionMapper fMapper = (FunctionMapper)
+		// ctx.getBean("functionMapper");
+		// List<Function> fList = fMapper.getFunctionList();
+		// for (Function f : fList) {
+		// System.out.println(f.getFunctionName());
+		// }
+		PermissionService pMapper = (PermissionService) ctx.getBean("permissionService");
+		Permission p = new Permission();
+		p.setRoleId(1);
+		p.setIsStart(1);
+		List<Permission> list = pMapper.getList(p);
+		for (Permission permission : list) {
+			System.out.println(permission.getCreatedBy());
+			System.out.println(permission.getCreationTime());
 		}
 	}
 }

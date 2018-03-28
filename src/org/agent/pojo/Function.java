@@ -6,28 +6,21 @@ public class Function extends Base {
 	private String functionCode;
 	private String functionName;
 	private Date creationTime;
-	private String createBy;
+	private String createdBy;
 	private Date lastUpdateTime;
-	private String funUrl;
+	private String funcUrl;
 	private Integer isStart;
 	private Integer parentId;
+	private boolean isCheck = false;
 
-	public Function(String functionCode, String functionName, Date creationTime, String createBy, Date lastUpdateTime,
-			String funUrl, Integer isStart, Integer parentId) {
-		super();
-		this.functionCode = functionCode;
-		this.functionName = functionName;
-		this.creationTime = creationTime;
-		this.createBy = createBy;
-		this.lastUpdateTime = lastUpdateTime;
-		this.funUrl = funUrl;
-		this.isStart = isStart;
-		this.parentId = parentId;
+	
+
+	public boolean getIsCheck() {
+		return isCheck;
 	}
 
-	public Function() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setIsCheck(boolean isCheck) {
+		this.isCheck = isCheck;
 	}
 
 	public String getFunctionCode() {
@@ -54,12 +47,12 @@ public class Function extends Base {
 		this.creationTime = creationTime;
 	}
 
-	public String getCreateBy() {
-		return createBy;
+	public String getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreateBy(String createBy) {
-		this.createBy = createBy;
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	public Date getLastUpdateTime() {
@@ -70,12 +63,12 @@ public class Function extends Base {
 		this.lastUpdateTime = lastUpdateTime;
 	}
 
-	public String getFunUrl() {
-		return funUrl;
+	public String getFuncUrl() {
+		return funcUrl;
 	}
 
-	public void setFunUrl(String funUrl) {
-		this.funUrl = funUrl;
+	public void setFuncUrl(String funcUrl) {
+		this.funcUrl = funcUrl;
 	}
 
 	public Integer getIsStart() {
@@ -93,4 +86,23 @@ public class Function extends Base {
 	public void setParentId(Integer parentId) {
 		this.parentId = parentId;
 	}
+
+	public Function(String functionCode, String functionName, Date creationTime, String createdBy, Date lastUpdateTime,
+			String funcUrl, Integer isStart, Integer parentId) {
+		super();
+		this.functionCode = functionCode;
+		this.functionName = functionName;
+		this.creationTime = creationTime;
+		this.createdBy = createdBy;
+		this.lastUpdateTime = lastUpdateTime;
+		this.funcUrl = funcUrl;
+		this.isStart = isStart;
+		this.parentId = parentId;
+	}
+
+	public Function() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 }

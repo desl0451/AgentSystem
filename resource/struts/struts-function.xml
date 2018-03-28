@@ -15,5 +15,8 @@
 			method="functionList">
 			<result>/WEB-INF/pages/functionlist.jsp</result>
 		</action>
+		
+		<action name="saverolefunc" class="org.agent.action.FunctionAction" method="saveRoleFunc">
+		</action>
 	</package>
 </struts>  
