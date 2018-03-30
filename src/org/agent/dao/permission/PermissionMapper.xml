@@ -9,18 +9,16 @@
 	</select>
 	<!-- public int addPermission(Permission permission); -->
 	<insert id="addPermission" parameterType="org.agent.pojo.Permission">
-		INSERT INTO
-		as_role_permission VALUES('roleId',
-		'functionId','creationTime','createdBy','lastUpdateTime','isStart')
-		Values(#{roleId},#{functionId},#{creationTime},#{#createdBy},#{lastUpdateTime},#{isStart})
+		INSERT INTO as_role_permission 
+		(roleId,functionId,creationTime,createdBy,lastUpdateTime,isStart)
+		VALUES
+		(#{roleId},#{functionId},#{creationTime},#{createdBy},NOW(),#{isStart})
 	</insert>
 	<!-- public int modifyPermission(Permission permission); -->
 	<update id="modifyPermission" parameterType="org.agent.pojo.Permission">
 		update
 		as_role_permission set
-		roleId=#{roleId},functionId=#{functionId},
-		lastUpdateTime=#{lastUpdateTime},
-		isStart=#{isStart}
+		roleId=#{roleId},functionId=#{functionId},lastUpdateTime=#{lastUpdateTime},isStart=#{isStart}
 		where id=#{id}
 	</update>
 	<!-- public int deletePermission(Permission permission); -->

@@ -8,8 +8,6 @@
 		<result property="userPassword" column="userPassword" />
 	</resultMap>
 
-
-
 	<resultMap type="org.agent.pojo.User" id="userList">
 		<result property="id" column="id" />
 		<result property="userCode" column="userCode" />
@@ -18,25 +16,24 @@
 		<result property="lastLoginTime" column="lastLoginTime" />
 		<result property="isStart" column="isStart" />
 		<result property="roleId" column="roleId" />
+		<result property="roleName" column="roleName" />
 	</resultMap>
 
 	<select id="getUserList" parameterType="org.agent.pojo.User"
 		resultMap="userList">
-		select * from as_user
-		<where>
-			<if test="userName!=null">
-				userName like CONCAT('%',#{userName},'%')
-			</if>
-			<if test="userCode!=null">
-				userCode like CONCAT('%',#{userCode},'%')
-			</if>
-			<if test="roleId!=null">
-				roleId =#{roleId}
-			</if>
-			<if test="isStart!=null">
-				isStart =#{isStart}
-			</if>
-		</where>
+		select u.*,r.roleName as roleName from as_user u,as_role r where u.roleId = r.id
+		<if test="userName != null">
+		 and u.userName like CONCAT('%',#{userName},'%')
+		</if>
+		<if test="userCode != null">
+		 and u.userCode like CONCAT('%',#{userCode},'%')
+		</if>
+		<if test="roleId != null">
+		  and u.roleId = #{roleId}
+		</if>
+		<if test="isStart != null">
+		  and u.isStart = #{isStart}
+		</if>
 	</select>
 
 	<select id="getUser" parameterType="org.agent.pojo.User"
@@ -64,20 +61,20 @@
 		</selectKey>
 	</insert>
 
-	<update id ="modifyUser" parameterType="user">
-		 update as_user
-			 <set>
-				 <if test="userCode != null"> userCode = #{userCode},</if>
-				 <if test="userName != null"> userName = #{userName},</if>
-				 <if test="userPassword != null"> userPassword = #{userPassword},</if>
-				 <if test="creationTime != null"> creationTime = #{creationTime},</if>
-				 <if test="lastLoginTime != null"> lastLoginTime = #{lastLoginTime},</if>
-				 <if test="createdBy != null"> createdBy = #{createdBy},</if>
-				 <if test="lastUpdateTime != null"> lastUpdateTime = #{lastUpdateTime},</if>
-				 <if test="isStart != null"> isStart = #{isStart},</if>
-			 	 <if test="roleId != null"> roleId = #{roleId}</if>
-		     </set>
-		  	where id = #{id}
+	<update id="modifyUser" parameterType="user">
+		update as_user
+		<set>
+			<if test="userCode != null"> userCode = #{userCode},</if>
+			<if test="userName != null"> userName = #{userName},</if>
+			<if test="userPassword != null"> userPassword = #{userPassword},</if>
+			<if test="creationTime != null"> creationTime = #{creationTime},</if>
+			<if test="lastLoginTime != null"> lastLoginTime = #{lastLoginTime},</if>
+			<if test="createdBy != null"> createdBy = #{createdBy},</if>
+			<if test="lastUpdateTime != null"> lastUpdateTime = #{lastUpdateTime},</if>
+			<if test="isStart != null"> isStart = #{isStart},</if>
+			<if test="roleId != null"> roleId = #{roleId}</if>
+		</set>
+		where id = #{id}
 	</update>
 
 	<delete id="deleteUser" parameterType="org.agent.pojo.User">
@@ -104,13 +101,16 @@
 		</where>
 	</select>
 
-	<select id="isExitLoginUser" parameterType="org.agent.pojo.User" resultType="int">
+	<select id="isExitLoginUser" parameterType="org.agent.pojo.User"
+		resultType="int">
 		select count(1) from as_user where userCode=#{userCode}
-	
+
 	</select>
-	
-	
-	<select id="getLoginUser" parameterType="org.agent.pojo.User" resultType="org.agent.pojo.User">
-	  select * from as_user where userCode=#{userCode} and userPassword=#{userPassword}
+
+
+	<select id="getLoginUser" parameterType="org.agent.pojo.User"
+		resultType="org.agent.pojo.User">
+		select * from as_user where userCode=#{userCode} and
+		userPassword=#{userPassword}
 	</select>
 </mapper>

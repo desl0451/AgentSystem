@@ -72,7 +72,7 @@
 				<a href="#">财务类型</a>
 				<a href="/rolelist.action">角色管理</a>
 				<a href="/permission.action">角色权限配置</a>
-				<a href="#">用户管理</a>
+				<a href="/userlist.action">用户管理</a>
 				<a href="#">关键词审核</a>
 				<a href="#">财务类型</a>
 			</li>

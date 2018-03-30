@@ -14,9 +14,5 @@
 		<action name="modifypwd" class="indexAction" method="modifyPwd">
 			<interceptor-ref name="adminIntegerceptor"></interceptor-ref>
 		</action>
-
-
-
 	</package>
-
 </struts>  

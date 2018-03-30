@@ -43,7 +43,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public List<Role> getRoleIdAndRnameList() {
+	public List<Role> getRoleIdAndNameList() {
 		// TODO Auto-generated method stub
 		return mapper.getRoleIdAndRnameList();
 	}

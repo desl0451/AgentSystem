@@ -19,6 +19,9 @@ public class FunctionAction extends BaseAction {
 	private RoleService roleService;
 	private List<Role> roleList;
 	private PermissionService permissionService;
+	/**
+	 * 权限编号
+	 */
 	private Integer roleId;
 	private String checkList;
 
@@ -30,9 +33,14 @@ public class FunctionAction extends BaseAction {
 		this.checkList = checkList;
 	}
 
+	/**
+	 * 获得所有角色
+	 * 
+	 * @return
+	 */
 	public String roleList() {
 		// 获得所有角色
-		this.roleList = this.roleService.getRoleIdAndRnameList();
+		this.roleList = this.roleService.getRoleIdAndNameList();
 		return Action.SUCCESS;
 	}
 
@@ -65,10 +73,9 @@ public class FunctionAction extends BaseAction {
 		pm.setCreatedBy(this.getCurrentUser().getUserCode());
 		pm.setCreationTime(new Date());
 		pm.setIsStart(1);
-		permissionService.tx_delAddPermission(pm,this.getCheckList());
 		// 2.保存
-
-				this.getOut().print("success");
+		permissionService.tx_delAddPermission(pm, this.getCheckList());
+		this.getOut().print("success");
 	}
 
 	public void setRoleId(Integer roleId) {

@@ -69,10 +69,10 @@ $().ready(function() {
 			humane.error("您第二次输入的新密码不能小于6位数，请重新输入。");
 		} else {
 			$.post("/modifypwd.action", {
-				'u.userPassword' : oldpwd,
-				'u.userCode' : newpwd,
-				'u.userName' : newpwd2,
-				'u.isStart' : 1
+				'user.userPassword' : oldpwd,
+				'user.userCode' : newpwd,
+				'user.userName' : newpwd2,
+				'user.isStart' : 1
 			}, function(result) {
 				if ("success" == result) {
 					humane.success("恭喜您，密码修改成功。");

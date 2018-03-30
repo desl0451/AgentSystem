@@ -11,14 +11,14 @@
 		<form>
 			<ul>
 				<li class="lititle"><b>添加角色信息</b></li>
-				<li>角色名称：<input id="a_roleName" type="text"
-					name="role.roleName" /> <span>*</span>
+				<li>角色名称：<input id="a_roleName" type="text" name="role.roleName" /> <span>*</span>
 				</li>
 				<li>是否启用： <select id="a_isStart" name="role.isStart">
-						<option value="1" selected="selected">启用</option>
-						<option value="0">不启用</option>
-				</select> <span>*</span> <input id="addRoleSubmit" type="button" value="保存" />
-					<input id="addcancel" type="reset" value="取消" />
+							<option value="1" selected="selected">启用</option>
+							<option value="0">不启用</option>
+						  </select> <span>*</span> 
+				    <input id="addRoleSubmit" type="button" value="保存" />
+					<input id="addCancel" type="reset" value="取消" />
 				</li>
 			</ul>
 		</form>
@@ -28,12 +28,13 @@
 		<ul>
 			<li class="lititle"><br>修改角色信息</li>
 			<input id="m_roleId" type="hidden" name="role.id" />
-			<li>角色名称：<input type="text" id="m_roleName" name="role.roleName" /></li>
+			<li>角色名称：  <input type="text" id="m_roleName" name="role.roleName" /></li>
 			<li>是否启用: <select id="m_isStart" name="role.isStart">
-					<option value="1" selected="selected">启用</option>
-					<option value="0">停用</option>
-			</select> <input id="modifyRoleSubmit" type="button" value="保存"> <input
-				id="modifyCancel" type="reset" value="取消">
+							<option value="1" selected="selected">启用</option>
+							<option value="0">停用</option>
+					   </select> 
+				<input id="modifyRoleSubmit" type="button" value="保存"> 
+				<input id="modifyCancel" type="reset" value="取消">
 			</li>
 		</ul>
 	</div>

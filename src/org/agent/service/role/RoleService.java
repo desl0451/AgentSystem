@@ -45,5 +45,5 @@ public interface RoleService {
 	 * ½ö²éÑ¯IDºÍName
 	 * @return
 	 */
-	public List<Role> getRoleIdAndRnameList();
+	public List<Role> getRoleIdAndNameList();
 }

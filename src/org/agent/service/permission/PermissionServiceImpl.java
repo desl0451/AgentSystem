@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 @Service("permissionService")
 public class PermissionServiceImpl implements PermissionService {
+	@Autowired
+	private PermissionMapper permissionMapper;
+
 	/**
 	 * 添加一个权限,先删除再添加,保证权限的唯一，避免冗余
 	 */
@@ -18,8 +21,9 @@ public class PermissionServiceImpl implements PermissionService {
 		// 1.组合所有角色和功能的映射Permission
 		String[] funcList = checkList.split(",");
 
+		// 2.删除角色信息
 		permissionMapper.deletePermission(pm);
-		
+
 		// 2.保存(删除再添加)
 		if (null != funcList && !funcList.equals("")) {
 			for (int i = 0; i < funcList.length; i++) {
@@ -28,9 +32,6 @@ public class PermissionServiceImpl implements PermissionService {
 			}
 		}
 	}
-
-	@Autowired
-	private PermissionMapper permissionMapper;
 
 	public PermissionMapper getPermissionMapper() {
 		return permissionMapper;

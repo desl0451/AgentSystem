@@ -6,8 +6,8 @@
 	<!-- 操作按钮 -->
 	<div class="btndiv">
 		<input type="hidden" id="roleid" value="<s:property value='roleId'/>" />
-		<input id="saverolefunc" type="button" value="保存" /> <input
-			id="cancel" type="button" value="取消" />
+		<input id="saverolefunc" type="button" value="保存" /> 
+		<input id="cancel" type="button" value="取消" />
 	</div>
 
 	<!-- 功能表格 -->
@@ -24,8 +24,14 @@
 		<tbody>
 			<s:iterator value="functionList">
 				<tr>
-					<td><input type="checkbox" class="cb"
-						value="<s:property value="id"/>" /></td>
+					<td>
+						<s:if test="isCheck">
+							<input type="checkbox" class="cb" checked="checked" value="<s:property value="id"/>" />
+						</s:if>
+						<s:else>
+							<input type="checkbox" class="cb" value="<s:property value="id"/>" />
+						</s:else>
+					</td>
 					<td><s:property value="functionName" /></td>
 					<td><s:property value="funcUrl" /></td>
 					<td><s:date name="creationTime" format="yyyy-MM-dd HH:mm:ss" /></td>

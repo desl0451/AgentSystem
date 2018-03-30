@@ -20,7 +20,7 @@
 	<form action="/login.action?isStart=1" method="post" class="jNice" onsubmit="return validateLoginUserFunc();">
 	<h1>登录系统 | Sign in</h1>
 	<ul class="loginul">
-		<li>登录账号：<input type="text" id="usercode" name="user.userCode" value="" maxlength="20" /></li>
+		<li>登录账号：<input type="text"     id="usercode" name="user.userCode" value="" maxlength="20" /></li>
 		<li>登录密码：<input type="password" id="userpassword" name="user.userPassword" value="" maxlength="20" /></li>
 		<li><input type="submit" id="loginBtn" value="登录| Login"/></li>
 	</ul>
