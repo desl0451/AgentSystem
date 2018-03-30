@@ -12,4 +12,6 @@ public interface PermissionService {
 	public int modifyPermission(Permission permission);
 
 	public int deletePermission(Permission permission);
+
+	public void tx_delAddPermission(Permission pm, String checkList);
 }

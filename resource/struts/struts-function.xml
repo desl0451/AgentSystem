@@ -17,6 +17,7 @@
 		</action>
 		
 		<action name="saverolefunc" class="org.agent.action.FunctionAction" method="saveRoleFunc">
+			
 		</action>
 	</package>
 </struts>  

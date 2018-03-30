@@ -1,5 +1,6 @@
 package org.agent.action;
 
+import java.util.Date;
 import java.util.List;
 
 import org.agent.pojo.Function;
@@ -18,8 +19,16 @@ public class FunctionAction extends BaseAction {
 	private RoleService roleService;
 	private List<Role> roleList;
 	private PermissionService permissionService;
-
 	private Integer roleId;
+	private String checkList;
+
+	public String getCheckList() {
+		return checkList;
+	}
+
+	public void setCheckList(String checkList) {
+		this.checkList = checkList;
+	}
 
 	public String roleList() {
 		// 获得所有角色
@@ -50,8 +59,16 @@ public class FunctionAction extends BaseAction {
 
 	public void saveRoleFunc() {
 		// 调用业务处理方法保存角色 和功能的映射
+		// 1.组合所有角色和功能的映射
+		Permission pm = new Permission();
+		pm.setRoleId(roleId);
+		pm.setCreatedBy(this.getCurrentUser().getUserCode());
+		pm.setCreationTime(new Date());
+		pm.setIsStart(1);
+		permissionService.tx_delAddPermission(pm,this.getCheckList());
+		// 2.保存
 
-		this.getOut().print("success");
+				this.getOut().print("success");
 	}
 
 	public void setRoleId(Integer roleId) {
