@@ -12,7 +12,6 @@ import org.apache.log4j.Logger;
 
 public class LoginAction extends BaseAction {
 
-	private Logger logger = Logger.getLogger(LoginAction.class);
 	private static final long serialVersionUID = 1140744150590704153L;
 
 	// 接收form表单提交的数据
@@ -66,15 +65,13 @@ public class LoginAction extends BaseAction {
 			}
 		}
 		this.getOut().write(flag);
-		//this.closeOut(this.getOut());
+		// this.closeOut(this.getOut());
 		return null;
 	}
 
 	public String main() {
 		return SUCCESS;
 	}
-
-	
 
 	/**
 	 * 退出
@@ -87,7 +84,8 @@ public class LoginAction extends BaseAction {
 			if (user != null && user.getId() > 0) {
 				getRequest().getSession().invalidate();
 				getRequest().getSession().removeAttribute(Constants.SESSION_USER);
-				logger.error("User logout : " + user.getUserCode() + " - " + user.getUserName());
+				// logger.error("User logout : " + user.getUserCode() + " - " +
+				// user.getUserName());
 				user = null;
 			}
 		} catch (Exception e) {

@@ -15,7 +15,6 @@ import com.opensymphony.xwork2.Action;
 
 public class UserAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
-	private Logger logger = Logger.getLogger(UserAction.class);
 
 	@Autowired
 	private UserService userService;

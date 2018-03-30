@@ -10,7 +10,6 @@ import org.agent.service.role.RoleService;
 import org.apache.log4j.Logger;
 
 public class RoleAction extends BaseAction {
-	private Logger logger = Logger.getLogger(RoleAction.class);
 	private static final long serialVersionUID = -6755381166484867033L;
 
 	@Resource

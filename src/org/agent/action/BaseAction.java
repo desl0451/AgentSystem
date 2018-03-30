@@ -14,6 +14,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BaseAction extends ActionSupport {
+	private static final long serialVersionUID = 504925248799037852L;
 	private UserService userService;
 	private User currentUser;
 	private String actionMessage;
