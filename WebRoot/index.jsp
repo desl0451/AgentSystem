@@ -24,7 +24,7 @@
 <body>
 	<%
 		//request.getRequestDispatcher("/login.action").forward(request, response);
-		response.sendRedirect("login.action");
+		response.sendRedirect("/login.action");
 	%>
 </body>
 </html>

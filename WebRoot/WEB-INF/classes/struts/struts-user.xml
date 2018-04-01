@@ -5,5 +5,8 @@
 		<action name="userlist" class="org.agent.action.UserAction" method="userList">
 			<result>/WEB-INF/pages/userlist.jsp</result>
 		</action>
+		
+		<action name="edituser" class="org.agent.action.UserAction" method="editUser"></action>
+		<action name="deleteuser" class="org.agent.action.UserAction" method="deleteUser"></action>
 	</package>
 </struts>

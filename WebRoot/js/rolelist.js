@@ -93,4 +93,6 @@ $().ready(function() {
 			}, 'html');
 		}
 	});
+	mover(4);
+	
 });

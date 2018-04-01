@@ -1,3 +1,4 @@
+//控制菜单
 function mover(object) {
 	for (var i = 1; i < 6; i++) {
 		if (i == object) {

@@ -72,6 +72,10 @@ public class RoleAction extends BaseAction {
 	}
 
 	public void deleteRole() {
+		
+		/**
+		 * 删除的内容大于0时显示成功
+		 */
 		if (this.getRoleService().deleteRole(role) > 0) {
 			this.getOut().print("success");
 		}
