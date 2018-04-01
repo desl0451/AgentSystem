@@ -20,4 +20,9 @@ public interface UserService {
 	public int isExitLoginUser(User user);
 
 	public User getLoginUser(User user);
+	
+	/**
+	 * 需要事务处理的添加
+	 */
+	public void tx_AddUser(User user);
 }

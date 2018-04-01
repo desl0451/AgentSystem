@@ -52,17 +52,22 @@ public class UserAction extends BaseAction {
 		if (user != null && user.getUserCode() != null && user.getUserCode() != "" && user.getUserName() != null
 				&& user.getUserName() != "" && user.getUserPassword() != null && user.getUserPassword() != "")
 			if (type.equals("add")) {
-				user.setCreatedBy(this.getCurrentUser().getUserCode());
-				user.setUserPassword(MD5.MD5Encode(user.getUserPassword()));
-				user.setCreationTime(new Date());
-				this.getUserService().addUser(user);
-				this.getOut().print("success");
+				User _user = this.getUserService().getUser(user);
+				if (_user != null) {
+					flag = "repeat";
+				} else {
+					user.setCreatedBy(this.getCurrentUser().getUserCode());
+					user.setUserPassword(MD5.MD5Encode(user.getUserPassword()));
+					user.setCreationTime(new Date());
+					this.getUserService().tx_AddUser(user);
+					flag = "success";
+				}
 			} else if (type.equals("modify")) {
 				user.setLastUpdateTime(new Date());
 				this.getUserService().modifyUser(user);
-				this.getOut().print("success");
+				flag = "success";
 			}
-
+		this.getOut().print(flag);
 	}
 
 	/**
@@ -71,10 +76,18 @@ public class UserAction extends BaseAction {
 	 * @return
 	 */
 	public void deleteUser() {
-		if (this.getUserService().deleteUser(user) > 0) {
-			this.getOut().print("success");
+		boolean flag = false;
+		if (user != null && user.getId() == null) {
+			int i = this.getUserService().deleteUser(user);
+			if (i > 0) {
+				flag = true;
+			}
 		}
-
+		if (flag) {
+			this.getOut().print("success");
+		} else {
+			this.getOut().print("failed");
+		}
 	}
 
 	public String getType() {

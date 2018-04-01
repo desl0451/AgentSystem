@@ -31,7 +31,10 @@
 	<!-- 修改面板 -->
 	<div id="modifyUserDiv" class="addUserDivClass modifyback">
 		<ul>
-			<li class="lititle"><b>修改代理商用户信息</b></li>
+				<li class="lititle">
+					<b>修改代理商用户信息</b>
+					<input id="m_id" type="hidden" name="id" /> 
+				</li>
 				<li>登录账号 ：<input id="m_userCode" type="text" name="user.userCode" /> <span>*</span></li>
 				<li>用户名称 ：<input id="m_userName" type="text" name="user.userName" /> <span>*</span></li>
 				<li>登录密码 ： <input id="m_userPassword" type="password" name="user.userPassword" value="123456"/><span>*默认初始密码123456</span> 
@@ -86,9 +89,15 @@
 							userpassword="<s:property value="userPassword"/>"
 							roleid="<s:property value="roleId"/>" 
 							isstart="<s:property value="isStart"/>"
-							svalue="<s:property value="configValue"/>">
+							svalue="<s:property value="configValue"/>"
+							id="<s:property value="id"/>">
+							
 						修改</span> 
-						<span class="deleteRole" id="<s:property value="id"/>" rolename="<s:property value="roleName"/>">删除</span>
+						<span class="deleteUser" 
+							id="<s:property value="id"/>" 
+							usercode="<s:property value="userCode"/>"
+							roleid="<s:property value="roleId"/>" 
+							>删除</span>
 					</td>
 				</tr>
 			</s:iterator>

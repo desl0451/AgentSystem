@@ -22,6 +22,7 @@ $().ready(function() {
 		$("#m_userPassword").val(b.attr('userpassword'))
 		$("#m_roleId").val(b.attr('roleid'));
 		$("#m_isStart").val(b.attr('isstart'));
+		$("#m_id").val(b.attr('id'));
 	});
 
 	//隐藏修改
@@ -55,6 +56,9 @@ $().ready(function() {
 				if (result == "success") {
 					humane.success("添加成功！");
 					window.location.href = "/userlist.action";
+				} else if (result == "repeat") {
+					humane.error("该用户已经存在!！");
+					window.location.href = "/userlist.action";
 				} else {
 					humane.error("添加失败！");
 				}
@@ -67,6 +71,8 @@ $().ready(function() {
 		var m_userPassword = $.trim($("#m_userPassword").val()); //提取密码
 		var m_roleId = $("#m_roleId").val();
 		var m_isStart = $("#m_isStart").val();
+		var m_id = $("#m_id").val();
+
 		if (m_userCode == '') {
 			humane.error("登录账号不能为空!");
 		} else if (m_userName == '') {
@@ -83,7 +89,8 @@ $().ready(function() {
 				'user.userName' : m_userName,
 				'user.userPassword' : m_userPassword,
 				'user.roleId' : m_roleId,
-				'user.isStart' : m_isStart
+				'user.isStart' : m_isStart,
+				'user.id' : m_id
 			}, function(result) {
 				if (result == "success") {
 					humane.success("修改成功!");
@@ -94,21 +101,30 @@ $().ready(function() {
 			}, 'html');
 		}
 	});
-	$(".deleteRole").click(function() {
-		var b=$(this);
-		var id = b.attr('id');
-		$.post("/deleteuser.action",
-			{
-				'user.id' : id
-			}, function(result) {
-				if (result == "success") {
-					humane.success("删除成功!");
-					window.location.href = "/userlist.action";
-				} else {
-					humane.error("删除失败!");
-				}
+	$(".deleteUser").click(function() {
+		var b = $(this);
+		var d_id = b.attr('id');
+		var d_userCode = b.attr("usercode");
+		var d_userRoleId=b.attr("roleid");
+		if(d_userRoleId==1){
+			humane.error("该账号角色：系统管理员!不能被删除!");
+			return;
+		}
+		
+		if (confirm("您确定要删除[" + d_userCode + "]吗？")) {
+			$.post("/deleteuser.action",
+				{
+					'user.id' : d_id
+				}, function(result) {
+					if (result == "success") {
+						humane.success("删除成功!");
+						window.location.href = "/userlist.action";
+					} else {
+						humane.error("删除失败!");
+					}
 
-			}, 'html');
+				}, 'html');
+		}
 	});
 	mover(4);
 });

@@ -27,4 +27,6 @@ public interface UserMapper {
 	public int isExitLoginUser(User user);
 
 	public User getLoginUser(User user);
+
+
 }

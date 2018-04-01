@@ -10,6 +10,12 @@ import org.springframework.stereotype.Service;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
+	@Override
+	public void tx_AddUser(User user) {
+		// TODO Auto-generated method stub
+		mapper.addUser(user);
+	}
+
 	@Autowired
 	private UserMapper mapper;
 
