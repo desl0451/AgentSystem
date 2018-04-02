@@ -22,7 +22,6 @@ public class UserAction extends BaseAction {
 	private String type;
 	private RoleService roleService;
 	private List<Role> roleList;
-
 	private List<User> userList;
 
 	/**
@@ -77,7 +76,7 @@ public class UserAction extends BaseAction {
 	 */
 	public void deleteUser() {
 		boolean flag = false;
-		if (user != null && user.getId() == null) {
+		if (user != null && user.getId() != null) {
 			int i = this.getUserService().deleteUser(user);
 			if (i > 0) {
 				flag = true;

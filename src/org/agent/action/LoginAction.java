@@ -30,8 +30,10 @@ public class LoginAction extends BaseAction {
 				this.getRequest().getSession().setAttribute(Constants.SESSION_USER, _user);// 保存Session
 				_user.setLastLoginTime(new Date());// 提取系统时间
 				userService.modifyUser(_user);// 更新用户状态
+				this.setLog(_user, Constants.OPERATE_INFO_USER_LOGIN_SUCCESS);
 				return SUCCESS;
 			} else {
+				this.setLog(_user, Constants.OPERATE_INFO_USER_LOGIN_FAILD);
 				return INPUT;
 			}
 		} else {
@@ -60,7 +62,6 @@ public class LoginAction extends BaseAction {
 					flag = "success";
 				}
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -84,14 +85,13 @@ public class LoginAction extends BaseAction {
 			if (user != null && user.getId() > 0) {
 				getRequest().getSession().invalidate();
 				getRequest().getSession().removeAttribute(Constants.SESSION_USER);
-				// logger.error("User logout : " + user.getUserCode() + " - " +
-				// user.getUserName());
 				user = null;
 			}
+			setLog(user, Constants.OPERATE_INFO_USER_LOGIN_SUCCESS);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return INPUT;
+		return SUCCESS;
 	}
 
 }

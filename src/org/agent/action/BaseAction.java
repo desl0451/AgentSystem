@@ -3,14 +3,17 @@ package org.agent.action;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.agent.common.Constants;
+import org.agent.pojo.Logs;
 import org.agent.pojo.User;
+import org.agent.service.logs.LogsService;
 import org.agent.service.user.UserService;
 import org.apache.struts2.ServletActionContext;
-
+import java.util.Date;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BaseAction extends ActionSupport {
@@ -19,6 +22,26 @@ public class BaseAction extends ActionSupport {
 	private User currentUser;
 	private String actionMessage;
 	private PrintWriter out;
+	@Resource
+	private LogsService logsService;
+
+	//¼ÇÂ¼ÈÕÖ¾
+	public void setLog(User user, String operateInfo) {
+		Logs logs = new Logs();
+		logs.setUserId(user.getId());
+		logs.setUserName(user.getUserCode());
+		logs.setOperateInfo(operateInfo);
+		logs.setOperateDatetime(new Date());
+		this.logsService.addLogs(logs);
+	}
+
+	public LogsService getLogsService() {
+		return logsService;
+	}
+
+	public void setLogsService(LogsService logsService) {
+		this.logsService = logsService;
+	}
 
 	public PrintWriter getOut() {
 		return out;

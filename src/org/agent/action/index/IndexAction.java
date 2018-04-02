@@ -4,10 +4,12 @@ import javax.annotation.Resource;
 
 import org.agent.action.BaseAction;
 import org.agent.action.LoginAction;
+import org.agent.common.Constants;
 import org.agent.common.MD5;
 import org.agent.pojo.User;
 import org.agent.service.user.UserService;
 import org.apache.log4j.Logger;
+import java.util.Date;
 
 public class IndexAction extends BaseAction {
 	private Logger logger = Logger.getLogger(LoginAction.class);
@@ -21,12 +23,7 @@ public class IndexAction extends BaseAction {
 		String oldpwd = user.getUserPassword();
 		String newpwd1 = user.getUserCode();
 		String newpwd2 = user.getUserName();
-		logger.error("oldpwd =======>" + oldpwd);
-		logger.error("newpwd1 =======>" + newpwd1);
-		logger.error("newpwd2 =======>" + newpwd2);
-
 		oldpwd = MD5.MD5Encode(oldpwd);
-
 		user.setId(this.getCurrentUser().getId());
 		String result = "0";
 		if (!newpwd1.equals(newpwd2)) {
@@ -39,8 +36,11 @@ public class IndexAction extends BaseAction {
 				user.setUserName(null);
 				user.setUserPassword(newpwd1);
 				user.setUserPassword(MD5.MD5Encode(user.getUserPassword()));
-				userService.modifyUser(user);
-				result = "success";
+				user.setLastLoginTime(new Date());
+				if (userService.modifyUser(user) > 0) {
+					this.setLog(user, Constants.OPERATE_INFO_USER_MODIFY_PASSWORD);
+					result = "success";
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -1,10 +1,10 @@
-package org.agent.dao.logs;
+package org.agent.service.logs;
 
 import java.util.List;
 
 import org.agent.pojo.Logs;
 
-public interface LogsMapper {
+public interface LogsService {
 	public List<Logs> getList(Logs logs);
 
 	public int addLogs(Logs logs);

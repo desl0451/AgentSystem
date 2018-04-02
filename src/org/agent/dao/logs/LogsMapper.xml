@@ -3,8 +3,42 @@
 <mapper namespace="org.agent.dao.logs.LogsMapper">
 	<!-- public List<Logs> getList(Logs logs); public int adLogs(Logs logs); 
 		public int count(Logs logs); -->
+	<select id="getList" parameterType="org.agent.pojo.Logs"
+		resultType="org.agent.pojo.Logs">
+		select * from as_logs
+		<where>
+			<if test="userId!=null">
+				and userId=#{userId}
+			</if>
+			<if test="operateDatetime!=null">
+				and operateDatetime like CONCAT ('%',#{odt},'%')
+			</if>
+			order by operateDatetime desc
+			<if test="startNum!=null and startSize!=null">
+				limit #{startNum},#{pageSize}
+			</if>
+		</where>
+	</select>
+	<insert id="addLogs" parameterType="org.agent.pojo.Logs">
+		insert into
+		as_logs(userId,username,operateInfo,operateDatetime)
+		values(#{userId},#{userName},#{operateInfo},#{operateDatetime})
+	</insert>
 
-	<select id=""></select>
-	<insert id=""></insert>
-	<select id=""></select>
+	<select id="count" parameterType="org.agent.pojo.Logs"
+		resultType="int">
+		select count(1) from as_logs
+		<where>
+			<if test="userId!=null">
+				and userId=#{userId}
+			</if>
+			<if test="operateDatetime!=null">
+				and operateDatetime like CONCAT ('%',#{odt},'%')
+			</if>
+			order by operateDatetime desc
+			<if test="startNum!=null and startSize!=null">
+				limit #{startNum},#{pageSize}
+			</if>
+		</where>
+	</select>
 </mapper>

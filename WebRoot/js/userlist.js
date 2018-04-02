@@ -105,12 +105,12 @@ $().ready(function() {
 		var b = $(this);
 		var d_id = b.attr('id');
 		var d_userCode = b.attr("usercode");
-		var d_userRoleId=b.attr("roleid");
-		if(d_userRoleId==1){
+		var d_userRoleId = b.attr("roleid");
+		if (d_userRoleId == 1) {
 			humane.error("该账号角色：系统管理员!不能被删除!");
 			return;
 		}
-		
+
 		if (confirm("您确定要删除[" + d_userCode + "]吗？")) {
 			$.post("/deleteuser.action",
 				{
