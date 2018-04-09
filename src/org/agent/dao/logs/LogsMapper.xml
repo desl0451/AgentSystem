@@ -13,11 +13,11 @@
 			<if test="operateDatetime!=null">
 				and operateDatetime like CONCAT ('%',#{odt},'%')
 			</if>
-			order by operateDatetime desc
-			<if test="startNum!=null and startSize!=null">
-				limit #{startNum},#{pageSize}
-			</if>
 		</where>
+		order by operateDatetime desc
+		<if test="startNum!=null and pageSize!=null">
+			limit #{startNum},#{pageSize}
+		</if>
 	</select>
 	<insert id="addLogs" parameterType="org.agent.pojo.Logs">
 		insert into
@@ -35,10 +35,10 @@
 			<if test="operateDatetime!=null">
 				and operateDatetime like CONCAT ('%',#{odt},'%')
 			</if>
+		</where>
 			order by operateDatetime desc
 			<if test="startNum!=null and startSize!=null">
 				limit #{startNum},#{pageSize}
 			</if>
-		</where>
 	</select>
 </mapper>

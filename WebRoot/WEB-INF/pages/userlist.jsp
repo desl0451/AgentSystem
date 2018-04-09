@@ -98,6 +98,8 @@
 							usercode="<s:property value="userCode"/>"
 							roleid="<s:property value="roleId"/>" 
 							>删除</span>
+						<span>预付款</span>
+						<span><a href="javascript:ymPrompt.win('/loglist.action',1000,500,'日志',handler,null,null,true)">LOG日志</a></span>
 					</td>
 				</tr>
 			</s:iterator>

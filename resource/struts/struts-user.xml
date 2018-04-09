@@ -8,5 +8,9 @@
 		
 		<action name="edituser" class="org.agent.action.UserAction" method="editUser"></action>
 		<action name="deleteuser" class="org.agent.action.UserAction" method="deleteUser"></action>
+		
+		<action name="loglist" class="org.agent.action.LogAction" method="logsList">
+			<result>/WEB-INF/pages/loglist.jsp</result>
+		</action>
 	</package>
 </struts>
