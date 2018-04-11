@@ -3,7 +3,7 @@
 <jsp:include page="/WEB-INF/pages/inc/head.jsp" />
 <div class="mbxnav">
 	<!-- 导航 -->
-	<a href="javascript:void();">系统管理</a> \ <a href="/userlist.action">用户管理</a>
+	<a href="javascript:void();">系统管理</a> \<a href="/userlist.action">用户管理</a>
 </div>
 <div class="container">
 	
@@ -99,7 +99,7 @@
 							roleid="<s:property value="roleId"/>" 
 							>删除</span>
 						<span>预付款</span>
-						<span><a href="javascript:ymPrompt.win('/loglist.action',1000,500,'日志',handler,null,null,true)">LOG日志</a></span>
+						<span><a href="javascript:ymPrompt.win('/loglist.action?user.userId=<s:property value="id"/>&user.userCode=<s:property value="userCode"/>&logs.operateDatetime=<s:date name="creationTime" format="yyyy-MM-dd HH:mm:ss" />',1000,500,'LOG日志',handler,null,null,true)">LOG日志</a></span>
 					</td>
 				</tr>
 			</s:iterator>
@@ -112,4 +112,64 @@
 <script type="text/javascript" src="/js/userlist.js"></script>
 </body>
 </html>
+<script type="text/javascript">
+		function cn(){
+			ymPrompt.setDefaultCfg({title:'标题', message:"内容",okTxt:' 确 定 ',cancelTxt:' 取 消 ',closeTxt:'关闭'});
+		}
+		function en(){
+			ymPrompt.setDefaultCfg({title:'Default Title', message:"Default Message",okTxt:' OK ',cancelTxt:' Cancel ',closeTxt:'close'});
+		}
+		function autoClose(){
+			alert('三秒钟自动关闭');
+			setTimeout(function(){ymPrompt.close()},3000)
+		}
+		function handlerIframe(){
+			alert(ymPrompt.getPage().contentWindow.document.body.outerHTML);
+			ymPrompt.close();
+		}
+		function noTitlebar(){
+			alert('提示：除了可以通过增加按钮来控制，还可以在子页面中调用该页面的ymPrompt.close方法来关闭');
+		}
+		var Alert=ymPrompt.alert;
+		function cancelFn(){
+			Alert("点击了'取消'按钮");
+		}
+		function okFn(){
+			Alert("点击了'确定'按钮");
+		}
+		function closeFn(){
+			Alert("点击了'关闭'按钮");
+		}
+		function handler(tp){
+			if(tp=='ok'){
+				okFn();
+			}
+			if(tp=='cancel'){
+				cancelFn();
+			}
+			if(tp=='close'){
+				closeFn()
+			}
+		}
+		function testHd(tp){
+			Alert('你点击的按钮的标志为：'+tp);
+		}
+		function handler2(tp){
+			if(tp=='ok'){
+				ymPrompt.confirmInfo("保存成功!是否打印税票？",null,null,"问询提示",function(tp){tp=='ok'?ticketPrevie("print"):loadImposeInfo()})
+			}
+			if(tp=='cancel'){
+				cancelFn();
+			}
+			if(tp=='close'){
+				closeFn()
+			}
+		}
+		function ticketPrevie(xx){
+			Alert(xx)
+		}
+		function loadImposeInfo(){
+			Alert("exit")
+		}
+	</script>
 <s:debug></s:debug>

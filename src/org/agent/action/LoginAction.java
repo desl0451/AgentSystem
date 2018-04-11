@@ -25,7 +25,7 @@ public class LoginAction extends BaseAction {
 			// 密码加密的处理
 			user.setUserPassword(MD5.MD5Encode(user.getUserPassword()));
 			User _user = userService.getLoginUser(user);
-
+			System.out.println(_user.getId()+"================");
 			if (_user != null) {
 				this.getRequest().getSession().setAttribute(Constants.SESSION_USER, _user);// 保存Session
 				_user.setLastLoginTime(new Date());// 提取系统时间

@@ -16,6 +16,7 @@
 <script type="text/javascript" src="/js/humane/humane.js"></script>
 <script type="text/javascript" src="/js/public.js"></script>
 <script type="text/javascript" src="/js/main.js" charset="UTF-8"></script>
+<link rel="stylesheet" id='skin' type="text/css" href="skin/qq/ymPrompt.css" />
 
 </head>
 <body>

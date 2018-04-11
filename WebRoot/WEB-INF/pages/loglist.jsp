@@ -30,8 +30,8 @@
 			<ul>
 				<li>
 					<form action="/loglist.action" method="post">
-						<input type="hidden" id="userCode" name="user.userCode" value="<s:property value="user.userCode"/>">
-						<input type="hidden" id="userId"   name="user.userId" value="<s:property value="user.userId"/>">
+						<input type="text" id="usercode" name="userCode" value="<s:property value='user.userCode'/>">
+						<input type="text" id="userid" name="userId" value="<s:property value='user.id'/>">
 						操作时间:
 						<input type="text" name="logs.operateDatetime" 
 						value='<s:date name="logs.operateDatetime" format="yyyy-MM-dd"/>'/>
