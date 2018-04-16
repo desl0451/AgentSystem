@@ -3,6 +3,8 @@ package org.agent.action;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.agent.pojo.Function;
 import org.agent.pojo.Permission;
 import org.agent.pojo.Role;
@@ -14,11 +16,15 @@ import com.opensymphony.xwork2.Action;
 
 public class FunctionAction extends BaseAction {
 	private static final long serialVersionUID = -4645807998094946801L;
+	@Resource
 	private FunctionService functionService;
-	private List<Function> functionList;
+	@Resource
 	private RoleService roleService;
-	private List<Role> roleList;
+	@Resource
 	private PermissionService permissionService;
+	
+	private List<Function> functionList;
+	private List<Role> roleList;
 	/**
 	 * È¨ÏÞ±àºÅ
 	 */

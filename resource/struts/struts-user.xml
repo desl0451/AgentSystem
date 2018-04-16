@@ -6,10 +6,10 @@
 			<result>/WEB-INF/pages/userlist.jsp</result>
 		</action>
 		
-		<action name="edituser" class="org.agent.action.UserAction" method="editUser"></action>
-		<action name="deleteuser" class="org.agent.action.UserAction" method="deleteUser"></action>
+		<action name="edituser"   class="userAction" method="editUser"></action>
+		<action name="deleteuser" class="userAction" method="deleteUser"></action>
 		
-		<action name="loglist" class="org.agent.action.LogAction" method="logsList">
+		<action name="loglist" class="logAction" method="logsList">
 			<result>/WEB-INF/pages/loglist.jsp</result>
 		</action>
 	</package>

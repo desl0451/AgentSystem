@@ -6,10 +6,19 @@
 	<!-- 这里配置Action -->
 	<!-- 登录Action -->
 	<bean id="loginAction" class="org.agent.action.LoginAction" scope="prototype" />
-	
+
 	<!-- 密码修改Action -->
 	<bean id="indexAction" class="org.agent.action.index.IndexAction" scope="prototype" />
-	
+
 	<!-- 角色Action -->
-	<bean id="roleAction" class="org.agent.action.RoleAction" scope="prototype"/>
-</beans> 
+	<bean id="roleAction" class="org.agent.action.RoleAction" scope="prototype" />
+
+	<!-- 日志Action -->
+	<bean id="logAction" class="org.agent.action.LogAction" scope="prototype" />
+	
+	<!-- 用户Action -->
+	<bean id="userAction" class="org.agent.action.UserAction" scope="prototype"/>
+	
+	<!-- 功能Action -->
+	<bean id="functionAction" class="org.agent.action.FunctionAction" scope="prototype"/>
+</beans>  
