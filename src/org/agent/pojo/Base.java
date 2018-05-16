@@ -57,4 +57,5 @@ public class Base {
 	public void setSearchStr(String searchStr) {
 		this.searchStr = searchStr;
 	}
+
 }

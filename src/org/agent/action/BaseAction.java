@@ -2,18 +2,20 @@ package org.agent.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.agent.common.Constants;
+import org.agent.common.PageSupport;
 import org.agent.pojo.Logs;
 import org.agent.pojo.User;
 import org.agent.service.logs.LogsService;
 import org.agent.service.user.UserService;
 import org.apache.struts2.ServletActionContext;
-import java.util.Date;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BaseAction extends ActionSupport {
@@ -24,8 +26,17 @@ public class BaseAction extends ActionSupport {
 	private PrintWriter out;
 	@Resource
 	private LogsService logsService;
+	private PageSupport pager;
 
-	//记录日志
+	public PageSupport getPager() {
+		return pager;
+	}
+
+	public void setPager(PageSupport pager) {
+		this.pager = pager;
+	}
+
+	// 记录日志
 	public void setLog(User user, String operateInfo) {
 		Logs logs = new Logs();
 		logs.setUserId(user.getId());
@@ -57,8 +68,10 @@ public class BaseAction extends ActionSupport {
 		try {
 			this.out = this.getResponse().getWriter();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		if (this.pager == null) {
+			this.pager = new PageSupport();// 初始化分页对象
 		}
 	}
 

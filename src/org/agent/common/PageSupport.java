@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 分页支持
+ * 分页支持 totalCount,pageSize,page必要参数 结果保存在items
  * 
  * @author Administrator
  *

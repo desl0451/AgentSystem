@@ -7,7 +7,8 @@ public class Logs extends Base {
 	private String userName;
 	private String operateInfo;
 	private Date operateDatetime;
-	private String odt;//yyyy-MM-dd
+	private String odt;// yyyy-MM-dd
+
 	public String getOdt() {
 		return odt;
 	}
@@ -60,4 +61,5 @@ public class Logs extends Base {
 	public void setOperateDatetime(Date operateDatetime) {
 		this.operateDatetime = operateDatetime;
 	}
+
 }

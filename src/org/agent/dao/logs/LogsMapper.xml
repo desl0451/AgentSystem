@@ -25,22 +25,15 @@
 		values(#{userId},#{userName},#{operateInfo},#{operateDatetime})
 	</insert>
 
-	<select id="count" parameterType="org.agent.pojo.Logs"
-		resultType="int">
+	<select id="count" resultType="int" parameterType="logs">
 		select count(1) from as_logs
-		<where>
-			<if test="userId!=null">
-				and userId=#{userId}
-			</if>
-			<if test="operateDatetime!=null">
-				and operateDatetime like CONCAT ('%',#{odt},'%')
-			</if>
-			order by operateDatetime desc
-			<if test="startNum!=null and startSize!=null">
-				limit #{startNum},#{pageSize}
-			</if>
-		</where>
-
-
+		<trim prefix="where" prefixOverrides="and | or">
+		<if test="userId != null">
+		 	and userId = #{userId}
+		</if>
+		<if test="operateDatetime != null">
+		 	and operateDatetime like  CONCAT('%',#{odt},'%')
+		</if>
+		</trim>
 	</select>
 </mapper>

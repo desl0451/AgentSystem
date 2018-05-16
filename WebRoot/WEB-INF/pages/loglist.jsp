@@ -46,7 +46,15 @@
 					<td>操作信息</td>
 					<td>操作时间</td>
 				</tr>
-				<s:iterator value="logsList">
+				<%-- <s:iterator value="logsList">
+				<tr>
+					<td><s:property value="userName"/></td>
+					<td><s:property value="operateInfo"/></td>
+					<td><s:date name="operateDatetime" format="yyyy-MM-dd"/></td>
+				</tr>
+				</s:iterator>
+				--%>
+				<s:iterator value="pager.items">
 				<tr>
 					<td><s:property value="userName"/></td>
 					<td><s:property value="operateInfo"/></td>

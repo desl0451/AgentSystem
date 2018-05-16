@@ -7,6 +7,7 @@ import org.agent.pojo.Logs;
 import org.agent.pojo.User;
 
 public class LogAction extends BaseAction {
+	
 	private Logs logs;
 	private List<Logs> logsList;
 	private User user;
@@ -50,7 +51,12 @@ public class LogAction extends BaseAction {
 			String odt = new SimpleDateFormat("yyyy-MM-dd").format(logs.getOperateDatetime());
 			logs.setOdt(odt);
 		}
+		logs.setStartNum(0);
+		logs.setPageSize(3);
+		this.getPager().setTotalCount(this.getLogsService().count(logs));//传和主总记录数
 		this.logsList = this.getLogsService().getList(logs);
+
+		this.getPager().setItems(logsList);// pager.items
 		return SUCCESS;
 	}
 }
